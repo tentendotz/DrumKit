@@ -5,7 +5,7 @@ for (var i = 0; i < numberOfDrumBottons; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function () {
     var buttonInnerHTML = this.innerHTML;
     makeSound(buttonInnerHTML);
-  
+    buttonAnimation(buttonInnerHTML);
   });
 }
 
@@ -49,4 +49,13 @@ function makeSound(key) {
 
     default: console.log(key);
   }
+}
+
+function buttonAnimation (currentKey) {
+  // Callback Functionなので、実引数はいらない。
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.toggle("pressed");
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  }, 100);
 }
