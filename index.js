@@ -9,6 +9,11 @@ for (var i = 0; i < numberOfDrumBottons; i++) {
   });
 }
 
+// Detecting Keyboard Press
+document.addEventListener("keydown", function(event) {
+  makeSound(event.key);
+  buttonAnimation(event.key);
+});
 
 function makeSound(key) {
   switch (key) {
@@ -52,7 +57,6 @@ function makeSound(key) {
 }
 
 function buttonAnimation (currentKey) {
-  // Callback Functionなので、実引数はいらない。
   var activeButton = document.querySelector("." + currentKey);
   activeButton.classList.toggle("pressed");
   setTimeout(function(){
